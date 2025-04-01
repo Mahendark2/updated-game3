@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Explore Canada – Learn Before You Play</title>
+    <link rel="stylesheet" href="{% static 'css/game3_menu.css' %}">
+</head>
+<body>
+
+    <div class="overlay">
+        <div class="menu-container">
+
+            <h1>National Parks Canadas</h1>
+
+            <!-- Name Input Section -->
+            <div id="name-section">
+                <h1>🍁 Ready to Explore Canada?</h1>
+                <p>Please enter your name to begin:</p>
+                <input type="text" id="player-name" placeholder="Your Name">
+                <p id="status">Press the start listening button and say name...</p>
+                <p id="result"></p>
+                <button id="name-submit">Continue</button>
+                <button id="load" onclick="load_saves()">Load Game</button>
+                <button id="mic" onclick="startListening()">Start Listening</button>
+                <button id="read-welcome" onclick="readWelcome()">🔊 Read Welcome</button>
+            </div>
+
+            <!-- Loading Screen -->
+            <div id='black_screen'></div>
+            <div id="load_panel">
+                <h2 style="background-color:white; font-size:70px;">Past Saves</h2>
+                <!-- Users -->
+                <div class="half_panel">
+                    <select multiple id="user_select" style="width:80%; height: 90%;"></select>
+                    <button id="select_user_button">select user</button>
+                </div>
+                <!-- Save Points -->
+                <div class="half_panel" id="save_select">
+                    <select multiple id="savepoints_select" style="width:80%; height: 90%;"></select>
+                    <button id="select_load_button">select load</button>
+                </div>
+                <button id="exit_load_saves" onclick="close_saves()">Exit</button>
+            </div>
+
+            <!-- Learning + Start Section -->
+            <div id="content-section" style="display: none;">
+                <h2 id="welcome-text"></h2>
+                <p>Quickly learn where each place belongs before you begin the game!</p>
+
+                <!-- Instructions -->
+                <div class="instructions">
+                    <h3>🧭 How to Play</h3>
+                    <ul>
+                        <li>🎯 Drag each tourist place to the correct province on the map.</li>
+                        <li>✅ +10 points for correct answers.</li>
+                        <li>❌ −10 points for incorrect ones.</li>
+                        <li>📍 Use what you’ve learned here to win!</li>
+                    </ul>
+                </div>
+
+                <button class="start-button" onclick="readInstructions()">🔊 Read Instructions</button>
+
+                <!-- Learning Cards -->
+                <div class="places-grid">
+                    <div class="place">
+                        <img src="{% static 'images/Whistler.png' %}" alt="Whistler">
+                        <p><strong>Whistler</strong><br>BC's famous ski resort town.</p>
+                    </div>
+                    <div class="place">
+                        <img src="{% static 'images/Vancouver_Island.png' %}" alt="Vancouver Island">
+                        <p><strong>Vancouver Island</strong><br>Nature & culture near Victoria.</p>
+                    </div>
+                    <div class="place">
+                        <img src="{% static 'images/Niagara.webp' %}" alt="Niagara Falls">
+                        <p><strong>Niagara Falls</strong><br>Massive waterfalls in Ontario.</p>
+                    </div>
+                    <div class="place">
+                        <img src="{% static 'images/Thousand_Islands_National_Park.png' %}" alt="Thousand Islands">
+                        <p><strong>Thousand Islands</strong><br>Scenic boat tours in Ontario.</p>
+                    </div>
+                    <div class="place">
+                        <img src="{% static 'images/Lake_Loiuse.webp' %}" alt="Lake Louise">
+                        <p><strong>Lake Louise</strong><br>Turquoise lake in Alberta.</p>
+                    </div>
+                    <div class="place">
+                        <img src="{% static 'images/Banff.webp' %}" alt="Banff">
+                        <p><strong>Banff</strong><br>Mountain town in Alberta.</p>
+                    </div>
+                    <div class="place">
+                        <img src="{% static 'images/Jasper.webp' %}" alt="Jasper">
+                        <p><strong>Jasper</strong><br>Alberta’s scenic national park.</p>
+                    </div>
+                    <div class="place">
+                        <img src="{% static 'images/Prince_Albert_National_Park.png' %}" alt="Prince Albert">
+                        <p><strong>Prince Albert Park</strong><br>Located in Saskatchewan.</p>
+                    </div>
+                    <div class="place">
+                        <img src="{% static 'images/omega_park.png' %}" alt="Omega Park">
+                        <p><strong>Omega Park</strong><br>Wildlife park in Quebec.</p>
+                    </div>
+                    <div class="place">
+                        <img src="{% static 'images/Montmorency_Park.png' %}" alt="Montmorency Falls">
+                        <p><strong>Montmorency Falls</strong><br>Taller than Niagara, in Quebec.</p>
+                    </div>
+                </div>
+
+                <button id="start-link" class="start-button" onclick="admit_user()">🎮 Start Game</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="map_saves" value="{{map_saves}}"></div>
+    <div id="map_users" value="{{map_users}}"></div>
+    <script src="{% static 'js/game3_menu.js' %}"></script>
+
+</body>
+</html>
